@@ -32,8 +32,8 @@ public class BlackJackGameTest extends TestCase{
 	}
 	public void testaddCard() {
 		Player test = new Player();
-		//test.addCard("H", "4");
-		//test.addCard("C", "J");
+		test.addCard("H", "4");
+		test.addCard("C", "J");
 		test.addCard("H", "A");
 		test.addCard("D", "2");
 		test.addCard("C", "A");

@@ -1,18 +1,21 @@
 package a1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Cards {
-	private static final HashMap<String,String> suits = fillsuits();
-	private static final HashMap<String,String> Rank= fillranks();
+	private static final HashMap<String,String> suits = (HashMap<String, String>) fillsuits();
+	private static final HashMap<String,String> Rank= (HashMap<String, String>) fillranks();
 	private ArrayList<Card> Deck;
 	
-	public Card() {
-		fillMaps;
+	public Cards() {
+
 		
 	}
 	public String toStrng() {
-		return Rank.values();
+		
+		return null;
 	}
 
 	
