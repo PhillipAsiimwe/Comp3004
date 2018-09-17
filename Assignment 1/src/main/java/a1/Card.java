@@ -6,7 +6,6 @@ import java.util.Map;
 public class Card {
 	private static final HashMap<String,String> Suits = fillsuits();
 	private static final HashMap<String,String> Rank= fillranks();
-	private ArrayList<Card> Deck;
 	private String suit,rank;
 	
 	public String getrank() {return rank;}

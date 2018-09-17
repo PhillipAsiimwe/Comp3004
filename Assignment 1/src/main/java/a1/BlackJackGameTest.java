@@ -1,6 +1,15 @@
 package a1;
 import junit.framework.TestCase;
 public class BlackJackGameTest extends TestCase{ 
+	
+	public void testDeck() {
+		Player testp = new Player();
+		Game test = new Game("n");
+		//test.shuffleDeck();
+		assertEquals(51,test.getdecksize());
+		System.out.println(test.getdecksize());
+		
+	}
 	public void testgetvalue() {// tests Loop and getvalue
 		Card test = new Card("H","A");
 		assertEquals(11, test.getvalue(false));
@@ -28,7 +37,7 @@ public class BlackJackGameTest extends TestCase{
 		test = new Card("H","Q");
 		assertEquals(10, test.getvalue(false));
 		test = new Card("H","K");
-		assertEquals(10, test.getvalue(false));
+		assertEquals(01, test.getvalue(false));
 	}
 	public void testaddCard() {
 		Player test = new Player();
@@ -40,12 +49,6 @@ public class BlackJackGameTest extends TestCase{
 		System.out.print(test.toString());
 		System.out.println(test.getvalue());
 	}
-	public void testDeck() {
-		Player testp = new Player();
-		Game test = new Game();
-		test.shuffleDeck();
-		assertEquals(52,test.getdecksize(););
-		
-	}
+	
 	
 }
