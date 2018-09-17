@@ -40,5 +40,12 @@ public class BlackJackGameTest extends TestCase{
 		System.out.print(test.toString());
 		System.out.println(test.getvalue());
 	}
+	public void testDeck() {
+		Player testp = new Player();
+		Game test = new Game();
+		test.shuffleDeck();
+		assertEquals(52,test.getdecksize(););
+		
+	}
 	
 }
