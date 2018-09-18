@@ -4,13 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class BlackJackTest {
+import junit.framework.TestCase;
+
+public class BlackJackTest extends TestCase {
 
 	public void testDeck() {
 		Player testp = new Player();
 		Game test = new Game("n");
 		//test.shuffleDeck();
-		assertEquals(51,test.getdecksize());
+		assertEquals(52,test.getdecksize());
 		System.out.println(test.getdecksize());
 		
 	}
@@ -41,7 +43,7 @@ public class BlackJackTest {
 		test = new Card("H","Q");
 		assertEquals(10, test.getvalue(false));
 		test = new Card("H","K");
-		assertEquals(01, test.getvalue(false));
+		assertEquals(10, test.getvalue(false));
 	}
 	public void testaddCard() {
 		Player test = new Player();
