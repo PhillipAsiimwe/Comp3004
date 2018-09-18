@@ -33,6 +33,9 @@ public class BlackJackTest extends TestCase {
 		testenv.setPlayer(testp);
 		testenv.Hit(testp);
 		testenv.hit(testp);
+		testenv.hit(testp);
+		testenv.hit(testp);
+		testenv.hit(testp);
 		assertEquals(true,testenv.isbust(testp));
 		
 	}
