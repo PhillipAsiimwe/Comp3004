@@ -16,6 +16,8 @@ public class Player extends Person{
 	public void emptyhnd() {super.emptyhnd();}
 	
 	public ArrayList<Card> getHand(){return super.getHand();}
+	
+
 	public String toString() {
 		String test;
 		test="Player: "+ super.getname() +" Has \n";

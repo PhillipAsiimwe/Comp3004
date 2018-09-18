@@ -10,6 +10,30 @@ import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
 	
+	public void testDone() {
+		Player testp = new Player();
+		Dealer Testd = new Dealer();
+		Card temp = new Card("SJ");
+		Card temp1 = new Card("H10");
+		
+	}
+	
+	
+	public void testCard() {
+		Card temp = new Card("SJ");
+		Card temp1 = new Card("H10");
+		System.out.println(temp.toString());
+		System.out.println(temp1.toString());
+	}
+	
+	public void testHit() {
+		Player testp = new Player();
+		Game testenv = new Game("c");
+		testenv.setPlayer(testp);
+		testenv.Hit(testp);
+		System.out.println(testp.toString());
+	}
+	
 	public void testsplitting() {
 		Dealer Testd = new Dealer("Noah");
 		Player Testp = new Player("Time");

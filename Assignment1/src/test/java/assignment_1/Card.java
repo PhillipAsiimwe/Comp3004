@@ -9,6 +9,9 @@ public class Card {
 	private String suit,rank;
 	public String getsuit() {return suit;}
 	public String getrank() {return rank;}
+	public Card(String a) {
+		this(a.substring(0, 1),a.substring(1));
+			}
 	public Card(String a,String b) {
 		if (Suits.containsKey(a)&& Rank.containsKey(b)) {
 			suit=Suits.get(a);
@@ -18,6 +21,7 @@ public class Card {
 		}
 		
 	}
+
 	public int getvalue(boolean Ace) {
 		int value=0;
 		String [] values= new String[] {"Null","ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"};//used to figure out value of said Card

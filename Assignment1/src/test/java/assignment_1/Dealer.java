@@ -23,5 +23,8 @@ public class Dealer extends Person {
 				
 		
 	}
+	public void Decide() {
+		
+	}
 
 }

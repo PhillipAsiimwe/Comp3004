@@ -13,13 +13,39 @@ public class Game {
 	private Dealer dealer;
 	boolean shuffled = false; 
 	
-	public Game(String type) {
-		initializeDeck();
-		if (type.equalsIgnoreCase("f")) {
-			
-		}else if (type.equalsIgnoreCase("c")) {
-			
+	public Game(String b) {
+		start(b);
+		setPlayer(player);
+		setPlayer(dealer);
+	
+	}
+	public Game(String [] a) {
+		start("NON");
+		player.addCard(new Card(a[0]));
+		player.addCard(new Card(a[1]));
+		dealer.addCard(new Card(a[2]));
+		dealer.addCard(new Card(a[3]));
+		for (int i=4 ;i<a.length;i++) {
+			if (a[i].equals("S")) {
+				//stand
+			}else if(a[i].equals("H")) {
+				//hit
+			}else if (a[i].equals("D")) {
+				if (player.canSplit()) {
+					//split
+				}else {
+					//dont 
+				}
+			}else {
+				if (a[i].length()<2) {
+					dealer.addCard(new Card(a[i]));
+				}else {
+					System.out.println("Can not do operations");
+				}
+			}
 		}
+		
+		
 	}
 	public void shuffleDeck() {
 		if (Deck.isEmpty()) {
@@ -39,11 +65,8 @@ public class Game {
 		if (!shuffled) {
 			shuffleDeck();
 		}
-		Card toadd ;
 		for (int i = 0;i<2;i++) {
-			toadd=Deck.pop();
-			Used.add(toadd);
-			a.addCard(toadd);
+			Deal(a);
 		}		
 		if ( a instanceof Dealer) {
 			dealer= (Dealer) a; 
@@ -53,6 +76,31 @@ public class Game {
 			player = (Player) a; 
 			System.out.println("Player");
 		}		
+	}
+	
+	public void Hit(Person p) {
+		if(p.getHand().size()<2) {
+			System.out.println("Cant Hit yet");
+		}else {
+			if( p instanceof Dealer) {
+				((Dealer)p).Decide();
+			}else {
+				Deal(p);					
+			}
+			
+		}
+		
+	}
+	public void Hit(Person p,String s) {
+		if(p.getHand().size()<2) {
+			System.out.println("Cant Hit yet");
+		}else {
+			
+		}
+		
+	}
+	public void stand(Person p) {
+		
 	}
 
 	public void initializeDeck() {
@@ -65,8 +113,24 @@ public class Game {
 			}
 		}
 	}
+	public void Deal(Person a) {
+		Card toadd ;
+		toadd=Deck.pop();
+		if (!Used.contains(toadd)) {
+		Used.add(toadd);
+		a.addCard(toadd);
+		}else {
+			System.out.println("Couldnt Deal");
+		}
+	}
 	public int getdecksize() {
 		return Deck.size();
+	}
+	public void start(String a) {
+		initializeDeck();
+		shuffleDeck();
+		if (a.equals("NON")) {player = new Player();}else {player = new Player(a);}
+		dealer= new Dealer("Mike");
 	}
 
 }
