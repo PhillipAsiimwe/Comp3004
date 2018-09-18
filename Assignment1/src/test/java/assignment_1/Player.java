@@ -2,47 +2,24 @@ package assignment_1;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends Person{
 	private ArrayList<Card> inHnd = new ArrayList<Card>();
 	private String name;
-	boolean Ace = false;
-	public Player() {
-		this("Testplayer");
-	}
-	public Player(String nme) {
-		name = nme;
-	}
-	public int getvalue() {
-		boolean ace = false;
-		int total=0;
-		for (Card a :inHnd) {
-			total += a.getvalue(ace);
-			if (a.getrank().equals("ACE")) {
-				ace = true;
-			}
-		}
-		return total;
-	}
-	public void addCard(Card c) {
-		inHnd.add(c);
-	}
+	public Player() {super();}
+	public Player(String nme) {super(nme);}
+	public int getvalue() {return super.getvalue();}
 	
-	public void addCard(String a,String b) {
-		Card addtohand=new Card(a,b);
-		inHnd.add(addtohand);
-	}
-	public void emptyhnd() {
-		inHnd = new ArrayList<Card>();
-	}
-	public ArrayList<Card> getHand(){
-		return inHnd;
-	}
+	public void addCard(Card c) {super.addCard(c);}
+	
+	public void addCard(String a,String b) {super.addCard(a, b);}
+	
+	public void emptyhnd() {super.emptyhnd();}
+	
+	public ArrayList<Card> getHand(){return super.getHand();}
 	public String toString() {
 		String test;
-		test="Player: "+ name +" Has \n";
-		for (Card a: inHnd) {
-			test+= a.toString() + "\n";
-		}
+		test="Player: "+ super.getname() +" Has \n";
+		test+=super.toString();
 		return test;
 				
 	}

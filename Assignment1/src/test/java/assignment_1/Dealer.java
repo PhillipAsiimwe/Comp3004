@@ -1,7 +1,8 @@
 package assignment_1;
 
-public class Dealer extends Player {
-	private Card firstCard;
+import java.util.ArrayList;
+
+public class Dealer extends Person {
 	public Dealer() {
 		super();
 	}
@@ -9,16 +10,18 @@ public class Dealer extends Player {
 		super(nme);
 	}
 	public void setfirstcard(Card a) {
-		firstCard= a;
+		super.setfirstcard(a);
 	}
 	public Card getFirst() {
 		return super.getHand().get(0);
 	}
-//	public String toString() {
-//		
-//		
-//		return null;
-//		
-//	}
+	public String toString() {
+		String test;
+		test="Dealer: "+ super.getname() +" Has \n";
+		test += super.toString();
+		return test;
+				
+		
+	}
 
 }

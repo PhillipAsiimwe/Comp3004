@@ -35,7 +35,7 @@ public class Game {
 	public Card getpop() {
 		return Deck.pop();
 	}
-	public void setPlayer(Dealer a) {
+	public void setPlayer(Person a) {
 		if (!shuffled) {
 			shuffleDeck();
 		}
@@ -46,11 +46,11 @@ public class Game {
 			a.addCard(toadd);
 		}		
 		if ( a instanceof Dealer) {
-			dealer= a; 
+			dealer= (Dealer) a; 
 			dealer.setfirstcard(dealer.getFirst());
 			System.out.println("Dealer");
 		}else {
-			player = a; 
+			player = (Player) a; 
 			System.out.println("Player");
 		}		
 	}

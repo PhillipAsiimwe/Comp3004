@@ -12,9 +12,13 @@ public class BlackJackTest extends TestCase {
 	
 	public void testDealer() {
 		Dealer testd= new Dealer("Mike");
+		Player testp = new Player("Phill");
 		Game test = new Game("n");
 		test.setPlayer(testd);
-		System.out.print(testd.toString());
+		test.setPlayer(testp);
+		System.out.println(testd.toString());
+		System.out.println(testp.toString());
+
 	}
 
 	public void testDeck() {
