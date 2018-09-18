@@ -48,6 +48,16 @@ public abstract class Person {
 	public void finsihed() {
 		finished=true;
 	}
+	public boolean canSplit() {
+		boolean temp;
+		ArrayList<Card> hand = this.getHand();
+		if (hand.size()==2 &&(hand.get(0).getrank().equals(hand.get(1).getrank()))){
+			temp = true;
+		}else {
+			temp=false;
+		}
+		return temp;
+	}
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
