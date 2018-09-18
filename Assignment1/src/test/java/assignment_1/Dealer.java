@@ -1,7 +1,5 @@
 package assignment_1;
 
-import java.util.ArrayList;
-
 public class Dealer extends Person {
 	public Dealer() {
 		super();

@@ -3,8 +3,6 @@ package assignment_1;
 import java.util.ArrayList;
 
 public class Player extends Person{
-	private ArrayList<Card> inHnd = new ArrayList<Card>();
-	private String name;
 	public Player() {super();}
 	public Player(String nme) {super(nme);}
 	public int getvalue() {return super.getvalue();}

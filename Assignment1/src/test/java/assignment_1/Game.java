@@ -1,8 +1,11 @@
 package assignment_1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 
@@ -13,10 +16,52 @@ public class Game {
 	private Dealer dealer;
 	boolean shuffled = false; 
 	
+	public static void main(String[] args) {
+		Game game;
+		String Choice;
+		Scanner in = new Scanner (System.in);
+		System.out.println("Welcome to BlackJack, How would you like to play? ('c' console or 'f' File input)");
+		boolean flag= true;
+		while(flag) {
+		Choice = in.nextLine();
+		if (Choice.equalsIgnoreCase("c")) {
+			//Console();
+			System.out.println("Whats your name?");
+			Choice= in.nextLine();
+			game = new Game(Choice);
+			System.exit(0);
+		}else if (Choice.equalsIgnoreCase("f")){
+			System.out.println("Ok, please make sure the .TXT file is in '/Assignment_1/src/main/resources'");
+			System.out.println("What is the File  name?");
+			String name= in.nextLine();
+			String Path = "C:\\Users\\phlli\\OneDrive\\Documents\\Fall 2018\\Comp3004\\Assignment1\\src\\main\\resources\\"+name+".txt" ;
+			File file = new File(Path);
+			Scanner sc = null;
+			try {
+				sc = new Scanner(file);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			while(sc.hasNextLine()) {
+				String line = sc.nextLine();
+				String [] commands = line.split(" ");
+				game= new Game(commands);
+				
+			}
+			
+		}else {  
+			System.out.println("Sorry I dont know your input method for this BlackJack game");
+			flag = true;
+		}
+
+	}
+}
+	
 	public Game(String b) {
 		start(b);
 		setPlayer(player);
 		setPlayer(dealer);
+		console();
 	
 	}
 	public Game(String [] a) {
@@ -43,8 +88,7 @@ public class Game {
 					System.out.println("Can not do operations");
 				}
 			}
-		}
-		
+		}		
 		
 	}
 	public void shuffleDeck() {
@@ -53,6 +97,9 @@ public class Game {
 		}
 		Collections.shuffle(Deck);
 		shuffled=true;
+		
+	}
+	public void done() {
 		
 	}
 	public Stack <Card> getDeck(){
@@ -132,5 +179,33 @@ public class Game {
 		if (a.equals("NON")) {player = new Player();}else {player = new Player(a);}
 		dealer= new Dealer("Mike");
 	}
+	public void console() {
+		String answer=null;
+		Scanner sc = new Scanner(System.in);
+		while(!player.isFinsihed() || !dealer.isFinsihed()) {
+			if (!player.isFinsihed()) {
+				System.out.println(player.getname() +" would you like to Hit (H) or stand (S)");
+				if (player.canSplit()) {
+					System.out.println("You can also split (D)");
+				}
+				answer=sc.nextLine();
+				if (answer.equalsIgnoreCase("H")) {
+					hit(player);
+				}else if (answer.equalsIgnoreCase("S")) {
+					stand(player);
+				}else if  (player.canSplit()&& answer.equalsIgnoreCase("D")){
+					split();
+				}else {
+					System.out.println("Sorry wrong command");
+				}
+				
+				
+			}else if (!dealer.isFinsihed()) {
+				
+			}
+			
+		}
+	}
+	
 
 }

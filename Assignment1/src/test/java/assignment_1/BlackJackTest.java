@@ -9,6 +9,7 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
+
 	
 	public void testDone() {
 		Player testp = new Player();
@@ -31,7 +32,9 @@ public class BlackJackTest extends TestCase {
 		Game testenv = new Game("c");
 		testenv.setPlayer(testp);
 		testenv.Hit(testp);
-		System.out.println(testp.toString());
+		testenv.hit(testp);
+		assertEquals(true,testenv.isbust(testp));
+		
 	}
 	
 	public void testsplitting() {

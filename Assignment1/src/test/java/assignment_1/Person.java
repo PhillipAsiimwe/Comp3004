@@ -45,8 +45,8 @@ public abstract class Person {
 	public ArrayList<Card> getHand(){
 		return inHnd;
 	}
-	public void finsihed() {
-		finished=true;
+	public boolean isFinsihed() {
+		return finished;
 	}
 	public boolean canSplit() {
 		boolean temp;
