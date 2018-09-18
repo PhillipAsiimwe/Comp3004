@@ -23,6 +23,9 @@ public class Player {
 		}
 		return total;
 	}
+	public void addCard(Card c) {
+		inHnd.add(c);
+	}
 	
 	public void addCard(String a,String b) {
 		Card addtohand=new Card(a,b);
@@ -30,6 +33,9 @@ public class Player {
 	}
 	public void emptyhnd() {
 		inHnd = new ArrayList<Card>();
+	}
+	public ArrayList<Card> getHand(){
+		return inHnd;
 	}
 	public String toString() {
 		String test;

@@ -11,9 +11,9 @@ import junit.framework.TestCase;
 public class BlackJackTest extends TestCase {
 	
 	public void testDealer() {
-		Dealer testd= new Player();
+		Dealer testd= new Dealer("Mike");
 		Game test = new Game("n");
-		test.setDealer(testd);
+		test.setPlayer(testd);
 		System.out.print(testd.toString());
 	}
 
