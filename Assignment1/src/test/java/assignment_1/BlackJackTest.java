@@ -10,6 +10,22 @@ import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
 	
+	public void splitting() {
+		Dealer Testd = new Dealer("Noah");
+		Player Testp = new Player("Time");
+		Card temp1 = new Card ("H","2");
+		Card temp2 = new Card ("D","2");
+		Card temp3 = new Card ("D","3");
+		Testd.addCard(temp1);
+		Testd.addCard(temp2);
+		Testp.addCard(temp1);
+		Testp.addCard(temp3);
+		assertEquals(true, Testd.canSplit());
+		asserEquals(false,Testp.canSplit());
+		
+		
+	}
+	
 	public void testDealer() {
 		Dealer testd= new Dealer("Mike");
 		Player testp = new Player("Phill");

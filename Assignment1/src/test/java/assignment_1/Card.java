@@ -7,7 +7,7 @@ public class Card {
 	private static final HashMap<String,String> Suits = fillsuits();
 	private static final HashMap<String,String> Rank= fillranks();
 	private String suit,rank;
-	
+	public String getsuit() {return suit;}
 	public String getrank() {return rank;}
 	public Card(String a,String b) {
 		if (Suits.containsKey(a)&& Rank.containsKey(b)) {
