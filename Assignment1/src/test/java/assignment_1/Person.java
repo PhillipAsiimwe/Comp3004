@@ -6,6 +6,7 @@ public abstract class Person {
 	private ArrayList<Card> inHnd = new ArrayList<Card>();
 	private String name;
 	private Card firstCard;
+	private boolean finished = false; 
 
 	public Person() {
 		this("Testplayer");
@@ -44,10 +45,13 @@ public abstract class Person {
 	public ArrayList<Card> getHand(){
 		return inHnd;
 	}
+	public void finsihed() {
+		finished=true;
+	}
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
-			if (this instanceof Dealer && a.equals(firstCard)) {
+			if (this instanceof Dealer && a.equals(firstCard)&& !finished) {
 				Text += "**HIDDEN**\n";
 			}else {
 			Text+= a.toString() + "\n";
