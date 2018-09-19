@@ -1,5 +1,7 @@
 package assignment_1;
 
+import java.util.ArrayList;
+
 public class Dealer extends Person {
 	public Dealer() {
 		super();
@@ -12,6 +14,24 @@ public class Dealer extends Person {
 	}
 	public Card getFirst() {
 		return super.getHand().get(0);
+	}
+	public boolean isSoft17() {
+		ArrayList<Card> temp = super.getHand();
+		for(Card a:temp) {
+			if (a.getrank().equals("ACE")) {
+				return true; 
+			}
+		}
+		if(super.isSplit()) {
+			temp = super.get2ndHnd();
+			for(Card a:temp) {
+				if (a.getrank().equals("ACE")) {
+					return true; 
+				}
+			}
+		}
+		return false; 
+		
 	}
 	
 	public String toString() {

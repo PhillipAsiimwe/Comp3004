@@ -69,21 +69,24 @@ public class Game {
 	
 	}
 	public Game(String [] a) {
-		start("NON");
+		start("NON");//Starts game off file
 		player.addCard(new Card(a[0]));
 		player.addCard(new Card(a[1]));
 		dealer.addCard(new Card(a[2]));
 		dealer.addCard(new Card(a[3]));
+		boolean isdealer=false;
 		for (int i=4 ;i<a.length;i++) {
 			if (a[i].equals("S")) {
 				//stand
 				stand(player);
+				
 			}else if(a[i].equals("H")) {
 				i++;
 				Hit(player,a[i]);
 			}else if (a[i].equals("D")) {
 				if (player.canSplit()) {
 					//split
+					player.split();
 				}else {
 					System.out.println("Sorry you cant split");
 					//dont 
@@ -104,9 +107,6 @@ public class Game {
 		}
 		Collections.shuffle(Deck);
 		shuffled=true;
-		
-	}
-	public void done() {
 		
 	}
 	public Stack <Card> getDeck(){
@@ -205,7 +205,6 @@ public class Game {
 					System.out.println("Sorry wrong command");
 				}
 				
-				
 			}else if (!dealer.isFinsihed()) {
 				play(dealer);
 				
@@ -215,11 +214,28 @@ public class Game {
 		}
 	}
 	public void play(Dealer a) {
-		if (a.isSplit()) {
-			if (a.getvalue(1)<=16) {
-				Deal(a);
-				
+		if (a.getvalue(1)<17) {
+			hit(a);
+		}else if (a.getvalue(1)==17) {
+			if (a.isSoft17()) {
+				System.out.println("**SOFT 17**");
+				hit(a);
 			}
+		}else {
+			stand(a);
+		}
+		if (a.isSplit()) {
+			if (a.getvalue(2)<17) {
+				hit(a);
+			}else if (a.getvalue(2)==17) {
+				if (a.isSoft17()) {
+					System.out.println("**SOFT 17**");
+					hit(a);
+				}
+			}else {
+				stand(a);
+			}
+			
 		}
 	}
 	public void split(Person a) {
@@ -229,7 +245,6 @@ public class Game {
 	public void hit(Person c) {
 		if (c.getvalue(1)<21) {
 			Deal(c);
-			
 		}else {
 			System.out.println("Cant hit Total too high ");
 			c.bust1();
@@ -240,7 +255,6 @@ public class Game {
 			}else {
 				System.out.println("Cant hit Total too high ");
 				c.bust2();
-				
 			}
 		}
 		
