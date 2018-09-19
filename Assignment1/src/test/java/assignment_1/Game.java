@@ -74,6 +74,9 @@ public class Game {
 		player.addCard(new Card(a[1]));
 		dealer.addCard(new Card(a[2]));
 		dealer.addCard(new Card(a[3]));
+		if (dealer.canSplit()) {
+			dealer.split();
+		}
 		System.out.println(player.toString());
 		System.out.println(dealer.toString());
 		boolean isdealer=false;
@@ -81,6 +84,11 @@ public class Game {
 			if (a[i].equals("S")) {
 				//stand
 				stand(player);
+				if(player.isSplit()&& !isdealer) {
+					i++;
+					Hit(player,a[i]);
+					isdealer=true;
+				}
 				System.out.println(player.toString());
 				System.out.println(dealer.toString());
 				
@@ -94,7 +102,9 @@ public class Game {
 			}else if (a[i].equals("D")) {
 				if (player.canSplit()) {
 					//split
+					i++;
 					player.split();
+					Hit(player,a[i]);
 					System.out.println(player.toString());
 					System.out.println(dealer.toString());
 
@@ -104,8 +114,9 @@ public class Game {
 					//dont 
 				}
 			}else {
-				if (a[i].length()<2 && !dealer.isFinsihed()) {
+				if (a[i].length()<=2) {
 					dealer.addCard(new Card(a[i]));
+					decide(dealer);
 					System.out.println(player.toString());
 					System.out.println(dealer.toString());
 
@@ -114,11 +125,31 @@ public class Game {
 					System.out.println(player.toString());
 					System.out.println(dealer.toString());
 
-					System.out.println(a[1]);
+					System.out.println(a[i]);
 
 				}
 			}
-		}		
+		}
+		done();
+		
+	}
+	public void done() {
+		player.setFinished();
+		dealer.setFinished();
+		System.out.println(player.toString());
+		System.out.println(dealer.toString());
+		if (player.getvalue(1)==21 && dealer.getvalue(1)==21) {
+			System.out.println("BlackJack Dealer Wins");
+		}else if (player.getvalue(1)==21) {
+			System.out.println("BlackJack player Wins");
+		}
+		else if (dealer.getvalue(1)==21) {
+			System.out.println("BlackJack Dealer Wins");
+		}else if (player.Best()>dealer.Best()) {
+			System.out.println("Player Wins");
+		}else if (player.Best()<dealer.Best()) {
+			System.out.println("Dealer Wins");
+		}
 		
 	}
 	public void shuffleDeck() {
@@ -157,12 +188,21 @@ public class Game {
 		if(p.getHand().size()<2 && !p.isSplit()) {
 			System.out.println("Cant Hit yet");
 		}else {
-			if (!p.isFinsihed()) {
+			if (!p.isbust1()) {
 			System.out.println("HITIT");
 			Card c = new Card(s);
 			Used.add(c);
 			Deck.remove(c);
 			p.addCard(c);
+			}else if (p.isbust1()){
+				System.out.println("HITIT");
+				Card c = new Card(s);
+				Used.add(c);
+				Deck.remove(c);
+				p.addCard(c);
+				}else {
+				System.out.println("over here ");
+				System.out.println(s);
 			}
 			
 			
@@ -171,7 +211,12 @@ public class Game {
 		
 	}
 	public void stand(Person p) {
-		p.setFinished();
+		if (p.isSplit()) {
+			p.bust1();
+		}else {
+			p.setFinished();
+
+		}
 		
 	}
 
@@ -303,8 +348,15 @@ public class Game {
 			
 			
 		}else if (a instanceof Dealer) {
-			System.out.println(dealer.toString());
-			
+			if (a.isSplit()) {
+				if (a.getvalue(1)>21) {
+					a.bust1();
+				}else if (a.getvalue(2)>21) {
+					a.bust2();
+				}
+				else  {
+				}
+			}
 		}
 		
 	}

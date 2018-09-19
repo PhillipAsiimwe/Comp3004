@@ -23,18 +23,30 @@ public abstract class Person {
 		return name;
 	}
 	public int getvalue(int c) {
-		boolean ace = false;
+		
+		int ace = 0;
 		int total=0;
 		if(c == 1) {
 		for (Card a :inHnd) {
-			total += a.getvalue(ace);
+			if(a.getrank().equals("ACE")) {
+				ace++;
+			}else {
+				total += a.getvalue();								
+			}
 			if (a.getrank().equals("ACE")) {
 				ace = true;
 			}
 		}
 		}else {
+			total=0;
+	
 			for (Card b :inHnd2) {
-				total += b.getvalue(ace);
+				if(b.getrank().equals("ACE") ) {
+					ace++;
+				}
+				else {
+					total += b.getvalue();								
+				}
 				if (b.getrank().equals("ACE")) {
 					ace = true;
 				}
@@ -88,10 +100,7 @@ public abstract class Person {
 		return temp;
 	}
 	public void split() {
-		System.out.println("Before " +inHnd.toString());
 		inHnd2.add(inHnd.remove(1));
-		System.out.println("After " +inHnd.toString());
-		System.out.println("second hand " +inHnd2.toString());
 		isSplit = true;
 	}
 	public boolean isSplit() {
@@ -101,7 +110,31 @@ public abstract class Person {
 		return inHnd2;
 	}
 	public boolean isbust1() {
+		if (getvalue(1)>21) {
+			bust1= true;
+		}
 		return bust1;
+	}
+	public int Best() {
+		if (isSplit) {
+			if (getvalue(1)<=21 && getvalue(2)<=21) {
+				return Math.max(getvalue(1), getvalue(2));
+			}else if (getvalue(1)>21) {
+				return getvalue(2);
+			}else if (getvalue(2)>21) {
+				return getvalue(1);
+			}else {
+				bust1=true;
+				bust2=true;
+			}
+			
+		}else {
+			System.out.println("**NOT Split**");
+		}
+		if (getvalue(1)>21) {
+			return 0;
+		}
+		return getvalue(1);
 	}
 	public String toString() {
 		String Text="";

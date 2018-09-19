@@ -23,13 +23,13 @@ public class Card {
 		
 	}
 
-	public int getvalue(boolean Ace) {
+	public int getvalue() {
 		int value=0;
 		String [] values= new String[] {"Null","ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"};//used to figure out value of said Card
 		if (rank.equals("ACE")) {
 			if (Ace) {
 				value = 1; 
-			}else {
+			}else  {
 				value = 11;
 			}
 		}else if(rank.equals("JACK") ||rank.equals("QUEEN")||rank.equals("KING") ) {
