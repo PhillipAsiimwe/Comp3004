@@ -56,6 +56,10 @@ public class Game {
 
 	}
 }
+	public Game () {
+		initializeDeck();
+		shuffleDeck();
+	}
 	
 	public Game(String b) {
 		start(b);
@@ -115,9 +119,11 @@ public class Game {
 		if (!shuffled) {
 			shuffleDeck();
 		}
+		if (a.getHand().size()==0) {
 		for (int i = 0;i<2;i++) {
 			Deal(a);
-		}		
+		}	
+		}
 		if ( a instanceof Dealer) {
 			dealer= (Dealer) a; 
 			dealer.setfirstcard(dealer.getFirst());
@@ -127,15 +133,20 @@ public class Game {
 	}
 	
 	public void Hit(Person p,String s) {
-		if(p.getHand().size()<2) {
+		if(p.getHand().size()<2 && !p.isSplit()) {
 			System.out.println("Cant Hit yet");
 		}else {
-			if (!p.isFinsihed())
+			if (!p.isFinsihed()) {
 			System.out.println("HITIT");
-			
+			Card c = new Card(s);
+			Used.add(c);
+			Deck.remove(c);
+			p.addCard(c);
+			}
 			
 			
 		}
+		this.decide((Player)p);
 		
 	}
 	public void stand(Person p) {
@@ -216,7 +227,7 @@ public class Game {
 	}
 	
 	public void hit(Person c) {
-		if (c.getvalue(1)<=21) {
+		if (c.getvalue(1)<21) {
 			Deal(c);
 			
 		}else {
@@ -224,7 +235,7 @@ public class Game {
 			c.bust1();
 		}
 		if (c.isSplit()) {
-			if (c.getvalue(2)<=21) {
+			if (c.getvalue(2)<21) {
 				Deal(c);
 			}else {
 				System.out.println("Cant hit Total too high ");
@@ -234,18 +245,56 @@ public class Game {
 		}
 		
 	}
+	
 	public void decide(Person a) {
-		if (a.isSplit()) {
+		if (a instanceof Player) {
 			if (a.getvalue(1)>21) {
+				System.out.println("***bust1**** ");
 				a.bust1();
-			}else if (a.getvalue(2)>21) {
-				a.bust2();
+			}else if (a.getvalue(1)==21) {
+				System.out.println("***BlackJack***");
+				a.setFinished();
 			}
-		}else if (a.getvalue(1)>21) {
-			System.out.println("***bust**** ");
-			a.bust1();
+			if (a.isSplit()) {
+				if (a.getvalue(2)>21) {
+					System.out.println("***bust2**** ");
+					a.bust2();
+				}else if (a.getvalue(2)==21) {
+					System.out.println("***BlackJack***");
+					a.setFinished();
+				}
+			}
+			
+			
+		}else if (a instanceof Dealer) {
+			
 		}
 	}
+//	public void decide(Player a) {
+//		if (a.isSplit()) {
+//			if (a.getvalue(1)>21) {
+//				System.out.println("***bust**** ");
+//				a.bust1();
+//			}else if (a.getvalue(2)>21) {
+//				System.out.println("***bust**** ");
+//				a.bust2();
+//			}
+//		}else if (a.getvalue(1)>21) {
+//			System.out.println("***bust**** ");
+//			a.bust1();
+//		}
+//	}
+//	public void decide(Dealer a) {
+//		if (a.isSplit()) {
+//			if (a.getvalue(1)>21) {
+//				a.bust1();
+//			}else if (a.getvalue(2)>21) {
+//				a.bust2();
+//			}
+//			else  {
+//			}
+//		}
+//	}
 	
 
 }

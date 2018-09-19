@@ -11,13 +11,21 @@ import junit.framework.TestCase;
 public class BlackJackTest extends TestCase {
 
 	
-	public void testDone() {
+	public void testSplitting() {
 		Player testp = new Player();
 		Dealer Testd = new Dealer();
 		Card temp = new Card("SA");
 		Card temp1 = new Card("HA");
 		testp.addCard(temp);
 		testp.addCard(temp1);
+		System.out.println(testp.toString());
+		Game testenv = new Game();
+		testenv.setPlayer(testp);
+		testenv.split(testp);
+		System.out.println(testp.toString());
+		testenv.Hit(testp, "S10");
+		testenv.Hit(testp, "H10");
+		testenv.Hit(testp,"H2");
 		System.out.println(testp.toString());
 		
 	}

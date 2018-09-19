@@ -88,7 +88,10 @@ public abstract class Person {
 		return temp;
 	}
 	public void split() {
+		System.out.println("Before " +inHnd.toString());
 		inHnd2.add(inHnd.remove(1));
+		System.out.println("After " +inHnd.toString());
+		System.out.println("second hand " +inHnd2.toString());
 		isSplit = true;
 	}
 	public boolean isSplit() {
@@ -106,16 +109,16 @@ public abstract class Person {
 			Text+= a.toString() + "\n";
 			}
 		}
-		Text+="Total: "+getvalue(1);
+		Text+="Total: "+getvalue(1)+"\n";
 		if (isSplit) {
-			for (Card ab: inHnd) {
+			for (Card ab: inHnd2) {
 				if (this instanceof Dealer && ab.equals(firstCard)&& !finished) {
 					Text += "**HIDDEN**\n";
 				}else {
 				Text+= ab.toString() + "\n";
 				}
 			}
-			Text+="Total: "+getvalue(2);
+			Text+="Total (Deck2): "+getvalue(2);
 		}
 		return Text;
 	}

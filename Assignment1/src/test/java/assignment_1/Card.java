@@ -8,6 +8,8 @@ public class Card {
 	private String suit,rank;
 	public String getsuit() {return suit;}
 	public String getrank() {return rank;}
+	
+	
 	public Card(String a) {
 		this(a.substring(0, 1),a.substring(1));
 			}
