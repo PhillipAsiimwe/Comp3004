@@ -26,13 +26,7 @@ public class Card {
 	public int getvalue() {
 		int value=0;
 		String [] values= new String[] {"Null","ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"};//used to figure out value of said Card
-		if (rank.equals("ACE")) {
-			if (Ace) {
-				value = 1; 
-			}else  {
-				value = 11;
-			}
-		}else if(rank.equals("JACK") ||rank.equals("QUEEN")||rank.equals("KING") ) {
+		 if(rank.equals("JACK") ||rank.equals("QUEEN")||rank.equals("KING") ) {
 			value= 10;
 		}else {
 			for (int i=0;i<values.length;i++) {

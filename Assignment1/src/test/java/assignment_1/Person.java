@@ -34,7 +34,6 @@ public abstract class Person {
 				total += a.getvalue();								
 			}
 			if (a.getrank().equals("ACE")) {
-				ace = true;
 			}
 		}
 		}else {
@@ -45,16 +44,16 @@ public abstract class Person {
 					ace++;
 				}
 				else {
-					total += b.getvalue();								
-				}
-				if (b.getrank().equals("ACE")) {
-					ace = true;
-				}
-			}
-			
+					total += b.getvalue();			
 		}
 		return total;
 	}
+}
+	if (ace>0 && total<11) {
+		
+	}
+}
+
 	public void addCard(Card c) {
 		if (bust1) {
 			inHnd2.add(c);
