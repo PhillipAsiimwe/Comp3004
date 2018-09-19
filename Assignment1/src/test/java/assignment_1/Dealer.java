@@ -17,12 +17,7 @@ public class Dealer extends Person {
 		String test;
 		test="Dealer: "+ super.getname() +" Has \n";
 		test += super.toString();
-		return test;
-				
-		
-	}
-	public void Decide() {
-		
+		return test;	
 	}
 
 }

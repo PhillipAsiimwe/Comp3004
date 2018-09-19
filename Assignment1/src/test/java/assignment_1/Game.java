@@ -130,7 +130,7 @@ public class Game {
 			System.out.println("Cant Hit yet");
 		}else {
 			if( p instanceof Dealer) {
-				((Dealer)p).Decide();
+//				((Dealer)p).Decide();
 			}else {
 				Deal(p);					
 			}
@@ -147,6 +147,7 @@ public class Game {
 		
 	}
 	public void stand(Person p) {
+		p.setFinished();
 		
 	}
 
@@ -184,7 +185,9 @@ public class Game {
 		Scanner sc = new Scanner(System.in);
 		while(!player.isFinsihed() || !dealer.isFinsihed()) {
 			if (!player.isFinsihed()) {
+				System.out.println(player.toString());
 				System.out.println(player.getname() +" would you like to Hit (H) or stand (S)");
+				
 				if (player.canSplit()) {
 					System.out.println("You can also split (D)");
 				}
@@ -194,7 +197,7 @@ public class Game {
 				}else if (answer.equalsIgnoreCase("S")) {
 					stand(player);
 				}else if  (player.canSplit()&& answer.equalsIgnoreCase("D")){
-					split();
+					split(player);
 				}else {
 					System.out.println("Sorry wrong command");
 				}
@@ -203,7 +206,42 @@ public class Game {
 			}else if (!dealer.isFinsihed()) {
 				
 			}
+			decide(player);
+			decide(dealer);
+		}
+	}
+	public void split(Person a) {
+		a.split();
+	}
+	
+	public void hit(Person c) {
+		if (c.getvalue(1)<=21) {
+			Deal(c);
 			
+		}else {
+			System.out.println("Cant hit Total too high ");
+			c.bust1();
+		}
+		if (c.isSplit()) {
+			if (c.getvalue(2)<=21) {
+				Deal(c);
+			}else {
+				System.out.println("Cant hit Total too high ");
+				c.bust2();
+				
+			}
+		}
+		
+	}
+	public void decide(Person a) {
+		if (a.isSplit()) {
+			if (a.getvalue(1)>21) {
+				a.bust1();
+			}else if (a.getvalue(2)>21) {
+				a.bust2();
+			}
+		}else if (a.getvalue(1)>21) {
+			System.out.println("***bust**** ");
 		}
 	}
 	

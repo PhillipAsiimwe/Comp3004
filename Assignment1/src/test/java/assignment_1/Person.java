@@ -4,9 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Person {
 	private ArrayList<Card> inHnd = new ArrayList<Card>();
+	private ArrayList<Card> inHnd2= new ArrayList<Card>();
 	private String name;
 	private Card firstCard;
+	private boolean bust1 = false;
+	private boolean bust2 = false;
+
 	private boolean finished = false; 
+	private boolean isSplit = false;
 
 	public Person() {
 		this("Testplayer");
@@ -17,22 +22,42 @@ public abstract class Person {
 	public String getname() {
 		return name;
 	}
-	public int getvalue() {
+	public int getvalue(int c) {
 		boolean ace = false;
 		int total=0;
+		if(c == 1) {
 		for (Card a :inHnd) {
 			total += a.getvalue(ace);
 			if (a.getrank().equals("ACE")) {
 				ace = true;
 			}
 		}
+		}else {
+			for (Card b :inHnd2) {
+				total += b.getvalue(ace);
+				if (b.getrank().equals("ACE")) {
+					ace = true;
+				}
+			}
+			
+		}
 		return total;
 	}
 	public void addCard(Card c) {
+		if (bust1) {
+			inHnd2.add(c);
+		}else {
 		inHnd.add(c);
+		}
 	}
 	public void setfirstcard(Card a) {
 		firstCard= a;
+	}
+	public void bust1() {
+		bust1 = true;
+	}
+	public void bust2() {
+		bust2=true;
 	}
 	
 	public void addCard(String a,String b) {
@@ -48,6 +73,8 @@ public abstract class Person {
 	public boolean isFinsihed() {
 		return finished;
 	}
+	public void setFinished() { finished=true;
+	}
 	public boolean canSplit() {
 		boolean temp;
 		ArrayList<Card> hand = this.getHand();
@@ -58,6 +85,16 @@ public abstract class Person {
 		}
 		return temp;
 	}
+	public void split() {
+		inHnd2.add(inHnd.remove(2));
+		isSplit = true;
+	}
+	public boolean isSplit() {
+		return isSplit;
+	}
+	public ArrayList<Card> get2ndHnd(){
+		return inHnd2;
+	}
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
@@ -66,6 +103,17 @@ public abstract class Person {
 			}else {
 			Text+= a.toString() + "\n";
 			}
+		}
+		Text+="Total: "+getvalue(1);
+		if (isSplit) {
+			for (Card ab: inHnd) {
+				if (this instanceof Dealer && ab.equals(firstCard)&& !finished) {
+					Text += "**HIDDEN**\n";
+				}else {
+				Text+= ab.toString() + "\n";
+				}
+			}
+			Text+="Total: "+getvalue(2);
 		}
 		return Text;
 	}

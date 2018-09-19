@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player extends Person{
 	public Player() {super();}
 	public Player(String nme) {super(nme);}
-	public int getvalue() {return super.getvalue();}
+	public int getvalue(int a) {return super.getvalue(a);}
 	
 	public void addCard(Card c) {super.addCard(c);}
 	
