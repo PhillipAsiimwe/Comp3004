@@ -55,9 +55,11 @@ public abstract class Person {
 	}
 	public void bust1() {
 		bust1 = true;
+		setFinished();
 	}
 	public void bust2() {
 		bust2=true;
+		setFinished();
 	}
 	
 	public void addCard(String a,String b) {
@@ -86,7 +88,7 @@ public abstract class Person {
 		return temp;
 	}
 	public void split() {
-		inHnd2.add(inHnd.remove(2));
+		inHnd2.add(inHnd.remove(1));
 		isSplit = true;
 	}
 	public boolean isSplit() {

@@ -73,16 +73,19 @@ public class Game {
 		for (int i=4 ;i<a.length;i++) {
 			if (a[i].equals("S")) {
 				//stand
+				stand(player);
 			}else if(a[i].equals("H")) {
-				//hit
+				i++;
+				Hit(player,a[i]);
 			}else if (a[i].equals("D")) {
 				if (player.canSplit()) {
 					//split
 				}else {
+					System.out.println("Sorry you cant split");
 					//dont 
 				}
 			}else {
-				if (a[i].length()<2) {
+				if (a[i].length()<2 && !dealer.isFinsihed()) {
 					dealer.addCard(new Card(a[i]));
 				}else {
 					System.out.println("Can not do operations");
@@ -118,30 +121,19 @@ public class Game {
 		if ( a instanceof Dealer) {
 			dealer= (Dealer) a; 
 			dealer.setfirstcard(dealer.getFirst());
-			System.out.println("Dealer");
 		}else {
 			player = (Player) a; 
-			System.out.println("Player");
 		}		
 	}
 	
-	public void Hit(Person p) {
-		if(p.getHand().size()<2) {
-			System.out.println("Cant Hit yet");
-		}else {
-			if( p instanceof Dealer) {
-//				((Dealer)p).Decide();
-			}else {
-				Deal(p);					
-			}
-			
-		}
-		
-	}
 	public void Hit(Person p,String s) {
 		if(p.getHand().size()<2) {
 			System.out.println("Cant Hit yet");
 		}else {
+			if (!p.isFinsihed())
+			System.out.println("HITIT");
+			
+			
 			
 		}
 		
@@ -204,10 +196,19 @@ public class Game {
 				
 				
 			}else if (!dealer.isFinsihed()) {
+				play(dealer);
 				
 			}
 			decide(player);
 			decide(dealer);
+		}
+	}
+	public void play(Dealer a) {
+		if (a.isSplit()) {
+			if (a.getvalue(1)<=16) {
+				Deal(a);
+				
+			}
 		}
 	}
 	public void split(Person a) {
@@ -242,6 +243,7 @@ public class Game {
 			}
 		}else if (a.getvalue(1)>21) {
 			System.out.println("***bust**** ");
+			a.bust1();
 		}
 	}
 	

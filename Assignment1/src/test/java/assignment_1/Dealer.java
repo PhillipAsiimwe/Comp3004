@@ -13,6 +13,7 @@ public class Dealer extends Person {
 	public Card getFirst() {
 		return super.getHand().get(0);
 	}
+	
 	public String toString() {
 		String test;
 		test="Dealer: "+ super.getname() +" Has \n";
