@@ -74,19 +74,31 @@ public class Game {
 		player.addCard(new Card(a[1]));
 		dealer.addCard(new Card(a[2]));
 		dealer.addCard(new Card(a[3]));
+		System.out.println(player.toString());
+		System.out.println(dealer.toString());
 		boolean isdealer=false;
 		for (int i=4 ;i<a.length;i++) {
 			if (a[i].equals("S")) {
 				//stand
 				stand(player);
+				System.out.println(player.toString());
+				System.out.println(dealer.toString());
 				
 			}else if(a[i].equals("H")) {
 				i++;
 				Hit(player,a[i]);
+				System.out.println(player.toString());
+				System.out.println(dealer.toString());
+
+
 			}else if (a[i].equals("D")) {
 				if (player.canSplit()) {
 					//split
 					player.split();
+					System.out.println(player.toString());
+					System.out.println(dealer.toString());
+
+
 				}else {
 					System.out.println("Sorry you cant split");
 					//dont 
@@ -94,8 +106,16 @@ public class Game {
 			}else {
 				if (a[i].length()<2 && !dealer.isFinsihed()) {
 					dealer.addCard(new Card(a[i]));
+					System.out.println(player.toString());
+					System.out.println(dealer.toString());
+
 				}else {
 					System.out.println("Can not do operations");
+					System.out.println(player.toString());
+					System.out.println(dealer.toString());
+
+					System.out.println(a[1]);
+
 				}
 			}
 		}		
@@ -129,7 +149,8 @@ public class Game {
 			dealer.setfirstcard(dealer.getFirst());
 		}else {
 			player = (Player) a; 
-		}		
+		}	
+		System.out.println(a.toString());
 	}
 	
 	public void Hit(Person p,String s) {
@@ -206,6 +227,7 @@ public class Game {
 				}
 				
 			}else if (!dealer.isFinsihed()) {
+				System.out.println(dealer.toString());
 				play(dealer);
 				
 			}
@@ -249,7 +271,7 @@ public class Game {
 			System.out.println("Cant hit Total too high ");
 			c.bust1();
 		}
-		if (c.isSplit()) {
+		if (c.isSplit() && c.isbust1()) {
 			if (c.getvalue(2)<21) {
 				Deal(c);
 			}else {
@@ -281,8 +303,10 @@ public class Game {
 			
 			
 		}else if (a instanceof Dealer) {
+			System.out.println(dealer.toString());
 			
 		}
+		
 	}
 //	public void decide(Player a) {
 //		if (a.isSplit()) {

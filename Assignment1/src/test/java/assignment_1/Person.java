@@ -100,6 +100,9 @@ public abstract class Person {
 	public ArrayList<Card> get2ndHnd(){
 		return inHnd2;
 	}
+	public boolean isbust1() {
+		return bust1;
+	}
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
@@ -109,7 +112,12 @@ public abstract class Person {
 			Text+= a.toString() + "\n";
 			}
 		}
-		Text+="Total: "+getvalue(1)+"\n";
+		if (this instanceof Dealer&& !finished) {
+		Text+="Total:?\n";
+		}else {
+			Text+="Total: "+getvalue(1)+"\n";
+
+		}
 		if (isSplit) {
 			for (Card ab: inHnd2) {
 				if (this instanceof Dealer && ab.equals(firstCard)&& !finished) {
@@ -118,9 +126,16 @@ public abstract class Person {
 				Text+= ab.toString() + "\n";
 				}
 			}
-			Text+="Total (Deck2): "+getvalue(2);
+			if (this instanceof Dealer && !finished) {
+				Text+="Total:?\n";
+				}else {
+					Text+="Total: "+getvalue(2)+"\n";
+
 		}
-		return Text;
 	}
+		return Text;
+
+
+}
 
 }
