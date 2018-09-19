@@ -117,7 +117,6 @@ public class Game {
 				if (a[i].length()<=2) {
 					dealer.addCard(new Card(a[i]));
 					decide(dealer);
-					System.out.println(player.toString());
 					System.out.println(dealer.toString());
 
 				}else {

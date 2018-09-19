@@ -22,21 +22,21 @@ public class BlackJackTest extends TestCase {
 		System.out.println(p.toString());
 		
 	}
-	public void testisSoft17() {
-		Dealer testd = new Dealer();
-		Player testp = new Player();
-		Game testenv= new Game();
-		testd.addCard(new Card("HA"));
-		testd.addCard(new Card("S5"));
-		testd.addCard(new Card("SA"));
-		testenv.setPlayer(testd);
-		testenv.setPlayer(testp);
-		testenv.console();
-		System.out.println(testd.toString());
-		
-	}
-
-	
+//	public void testisSoft17() {
+//		Dealer testd = new Dealer();
+//		Player testp = new Player();
+//		Game testenv= new Game();
+//		testd.addCard(new Card("HA"));
+//		testd.addCard(new Card("S5"));
+//		testd.addCard(new Card("SA"));
+//		testenv.setPlayer(testd);
+//		testenv.setPlayer(testp);
+//		testenv.console();
+//		System.out.println(testd.toString());
+//		
+//	}
+//
+//	
 //	public void testSplitting() {
 //		Player testp = new Player();
 //		Dealer Testd = new Dealer();

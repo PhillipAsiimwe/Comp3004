@@ -33,12 +33,8 @@ public abstract class Person {
 			}else {
 				total += a.getvalue();								
 			}
-			if (a.getrank().equals("ACE")) {
-			}
 		}
 		}else {
-			total=0;
-	
 			for (Card b :inHnd2) {
 				if(b.getrank().equals("ACE") ) {
 					ace++;
@@ -46,12 +42,19 @@ public abstract class Person {
 				else {
 					total += b.getvalue();			
 		}
-		return total;
 	}
 }
-	if (ace>0 && total<11) {
+	if (ace>0 ) {
+		for (int i = 0; i<ace;i++) {
+			if (total<11) {
+				total+=11;
+			}else {
+				total+=1;
+			}
+		}
 		
 	}
+	return total;
 }
 
 	public void addCard(Card c) {
