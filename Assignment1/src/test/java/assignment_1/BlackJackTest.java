@@ -9,27 +9,43 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
-	public void testDecide() {
+	public void testWinInstantly() {
 		Game game = new Game();
 		Dealer y = new Dealer();
-		Player g = new Player();
-		//Want to check if decide will know when to finish on a bust
-		g.addCard(new Card("S10"));
-		g.addCard(new Card("HQ"));
-		g.addCard(new Card("DA"));
-		game.setPlayer(g);
-		game.decide(g);//should print out Bust
-		y.addCard(new Card("SA"));
-		y.addCard(new Card("DA"));
-		y.split();
-		y.addCard(new Card("S9"));
-		y.addCard(new Card("DQ"));
-		y.addCard(new Card("C5"));
-		y.addCard(new Card("C6"));// doesnt go in the second array **Fixed**
+		Player p = new Player();
+		p.addCard(new Card("SA"));
+		p.addCard(new Card("DQ"));
+		y.addCard(new Card("H2"));
+		y.addCard(new Card("D2"));
+		game.setPlayer(p);
 		game.setPlayer(y);
-		game.decide(y);
+		game.decide(p);// should print that player won
+		y.addCard(new Card("DA"));
+		y.addCard(new Card("S2"));
+		game.decide(y);//Should print the dealer won
 		
 	}
+//	public void testDecide() {
+//		Game game = new Game();
+//		Dealer y = new Dealer();
+//		Player g = new Player();
+//		//Want to check if decide will know when to finish on a bust
+//		g.addCard(new Card("S10"));
+//		g.addCard(new Card("HQ"));
+//		g.addCard(new Card("DA"));
+//		game.setPlayer(g);
+//		game.decide(g);//should print out Bust
+//		y.addCard(new Card("SA"));
+//		y.addCard(new Card("DA"));
+//		y.split();
+//		y.addCard(new Card("S9"));
+//		y.addCard(new Card("DQ"));
+//		y.addCard(new Card("C5"));
+//		y.addCard(new Card("C6"));// doesnt go in the second array **Fixed**
+//		game.setPlayer(y);
+//		game.decide(y);
+//		
+//	}
 //	public void testgetvalueAce() {
 //		Game game = new Game();
 //		Player p= new Player();

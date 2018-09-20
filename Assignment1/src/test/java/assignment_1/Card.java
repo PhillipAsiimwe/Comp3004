@@ -45,12 +45,6 @@ public class Card {
 		return rank +" of "+ suit;
 	
 	}
-
-	
-	
-	
-	
-	
 	
 	private static HashMap<String,String> fillsuits() {	//initialize the Cards.
 		Map <String,String> suit = new HashMap<String,String>();

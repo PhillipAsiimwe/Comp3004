@@ -1,15 +1,10 @@
 package assignment_1;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
-
-import org.hamcrest.core.IsSame;
 
 public class Game {
 	private Stack <Card> Deck;
@@ -31,7 +26,7 @@ public class Game {
 	
 	}
 	public Game(String [] a) {
-		start("NON");//Starts game off file
+		start("NON");//Starts game off files
 		player.addCard(new Card(a[0]));
 		player.addCard(new Card(a[1]));
 		dealer.addCard(new Card(a[2]));
@@ -346,29 +341,5 @@ public class Game {
 	}
 	}
 }
-//	public void decide(Player a) {
-//		if (a.isSplit()) {
-//			if (a.getvalue(1)>21) {
-//				System.out.println("***bust**** ");
-//				a.bust1();
-//			}else if (a.getvalue(2)>21) {
-//				System.out.println("***bust**** ");
-//				a.bust2();
-//			}
-//		}else if (a.getvalue(1)>21) {
-//			System.out.println("***bust**** ");
-//			a.bust1();
-//		}
-//	}
-//	public void decide(Dealer a) {
-//		if (a.isSplit()) {
-//			if (a.getvalue(1)>21) {
-//				a.bust1();
-//			}else if (a.getvalue(2)>21) {
-//				a.bust2();
-//			}
-//			else  {
-//			}
-//		}
-//	}
+
 	
