@@ -198,6 +198,22 @@ public class BlackJackTest extends TestCase {
 		test = new Card("H","K");
 		assertEquals(10, test.getvalue());
 	}
+	public void testAce() {// test to make sure ACE is 11 and 1 at the right instance after changing return arguments and parameters. 
+		Player test = new Player();
+		test.addCard(new Card("SA"));
+		assertEquals(11, test.getvalue(1));
+		test.addCard(new Card("HA"));
+		assertEquals(12, test.getvalue(1));
+		Player test2 = new Player();
+		test.addCard(new Card("S10"));
+		test.addCard(new Card("DA"));
+		assertEquals(21, test.getvalue(1));
+		test = new Player ();
+		test.addCard(new Card("S10"));
+		test.addCard(new Card("S5"));
+		test.addCard(new Card("SA"));
+		assertEquals(16, test.getvalue(1));
+	}
 	public void testaddCard() {
 		Player test = new Player();
 		test.addCard("H", "4");
