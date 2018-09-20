@@ -24,21 +24,23 @@ public class BlackJackTest extends TestCase {
 		y.split();
 		y.addCard(new Card("S9"));
 		y.addCard(new Card("DQ"));
+		y.addCard(new Card("C5"));
+		y.addCard(new Card("C6"));// doesnt go in the second array 
 		game.setPlayer(y);
 		game.decide(y);
 		
 	}
-	public void testgetvalueAce() {
-		Game game = new Game();
-		Player p= new Player();
-		p.addCard(new Card("H4"));
-		p.addCard(new Card("S4"));
-		p.addCard(new Card("HA"));
-		p.addCard(new Card("SA"));
-		game.setPlayer(p);
-		System.out.println(p.toString());
-		
-	}
+//	public void testgetvalueAce() {
+//		Game game = new Game();
+//		Player p= new Player();
+//		p.addCard(new Card("H4"));
+//		p.addCard(new Card("S4"));
+//		p.addCard(new Card("HA"));
+//		p.addCard(new Card("SA"));
+//		game.setPlayer(p);
+//		System.out.println(p.toString());
+//		
+//	}
 //	public void testisSoft17() {
 //		Dealer testd = new Dealer();
 //		Player testp = new Player();
