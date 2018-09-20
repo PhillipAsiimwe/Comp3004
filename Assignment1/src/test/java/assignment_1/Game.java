@@ -17,47 +17,7 @@ public class Game {
 	private Player player;
 	private Dealer dealer;
 	boolean shuffled = false; 
-	
-	public static void main(String[] args) {
-		Game game;
-		String Choice;
-		Scanner in = new Scanner (System.in);
-		System.out.println("Welcome to BlackJack, How would you like to play? ('c' console or 'f' File input)");
-		boolean flag= true;
-		while(flag) {
-		Choice = in.nextLine();
-		if (Choice.equalsIgnoreCase("c")) {
-			//Console();
-			System.out.println("Whats your name?");
-			Choice= in.nextLine();
-			game = new Game(Choice);
-			System.exit(0);
-		}else if (Choice.equalsIgnoreCase("f")){
-			System.out.println("Ok, please make sure the .TXT file is in '/Assignment_1/src/main/resources'");
-			System.out.println("What is the File  name?");
-			String name= in.nextLine();
-			String Path = "C:\\Users\\phlli\\OneDrive\\Documents\\Fall 2018\\Comp3004\\Assignment1\\src\\main\\resources\\"+name+".txt" ;
-			File file = new File(Path);
-			Scanner sc = null;
-			try {
-				sc = new Scanner(file);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				String [] commands = line.split(" ");
-				game= new Game(commands);
-				
-			}
-			
-		}else {  
-			System.out.println("Sorry I dont know your input method for this BlackJack game");
-			flag = true;
-		}
 
-	}
-}
 	public Game () {
 		initializeDeck();
 		shuffleDeck();
@@ -125,7 +85,6 @@ public class Game {
 					System.out.println("Can not do operations");
 					System.out.println(player.toString());
 					System.out.println(dealer.toString());
-
 					System.out.println(a[i]);
 
 				}
@@ -151,7 +110,6 @@ public class Game {
 		}else if (player.Best()<dealer.Best()) {
 			System.out.println("Dealer Wins");
 		}
-		
 	}
 	public void shuffleDeck() {
 		if (Deck.isEmpty()) {
@@ -274,12 +232,16 @@ public class Game {
 				
 			}else if (!dealer.isFinsihed()) {
 				System.out.println(dealer.toString());
+				if (player.isFinsihed()) {
+					done();
+				}
 				play(dealer);
 				
 			}
 			decide(player);
 			decide(dealer);
 		}
+		done();
 	}
 	public void play(Dealer a) {
 		if (a.getvalue(1)<17) {

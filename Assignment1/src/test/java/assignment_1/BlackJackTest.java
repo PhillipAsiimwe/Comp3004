@@ -25,7 +25,7 @@ public class BlackJackTest extends TestCase {
 		y.addCard(new Card("S9"));
 		y.addCard(new Card("DQ"));
 		y.addCard(new Card("C5"));
-		y.addCard(new Card("C6"));// doesnt go in the second array 
+		y.addCard(new Card("C6"));// doesnt go in the second array **Fixed**
 		game.setPlayer(y);
 		game.decide(y);
 		
