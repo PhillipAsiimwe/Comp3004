@@ -227,11 +227,7 @@ public class Game {
 				
 			}else if (!dealer.isFinsihed()) {
 				System.out.println(dealer.toString());
-				if (player.isFinsihed()) {
-					done();
-				}
 				play(dealer);
-				
 			}
 			decide(player);
 			decide(dealer);
@@ -268,6 +264,7 @@ public class Game {
 	}
 	
 	public void hit(Person c) {
+		if (!c.isFinsihed()) {
 		if (c.getvalue(1)<21) {
 			Deal(c);
 		}else {
@@ -281,6 +278,7 @@ public class Game {
 				System.out.println("Cant hit Total too high ");
 				c.bust2();
 			}
+		}
 		}
 		
 	}
@@ -314,7 +312,7 @@ public class Game {
 			
 			
 		}else if (a instanceof Dealer) {
-			if (a.isSplit()) {
+			if (!a.isSplit()) {
 				if (a.getvalue(1)>21) {
 					System.out.println("***Dealer bust1***");
 					System.out.println(dealer.toString());

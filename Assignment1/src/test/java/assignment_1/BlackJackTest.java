@@ -15,14 +15,15 @@ public class BlackJackTest extends TestCase {
 		Player p = new Player();
 		p.addCard(new Card("SA"));
 		p.addCard(new Card("DQ"));
-		y.addCard(new Card("H2"));
-		y.addCard(new Card("D2"));
+		y.addCard(new Card("H4"));
+		y.addCard(new Card("D4"));
 		game.setPlayer(p);
-		game.setPlayer(y);
 		game.decide(p);// should print that player won
 		y.addCard(new Card("DA"));
 		y.addCard(new Card("S2"));
+		game.setPlayer(y);
 		game.decide(y);//Should print the dealer won
+		game.hit(y);
 		
 	}
 //	public void testDecide() {
