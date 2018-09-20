@@ -161,7 +161,7 @@ public class Game {
 			
 			
 		}
-		this.decide((Player)p);
+		//this.decide((Player)p);
 		}else {
 			System.out.println("GAme over");
 		}

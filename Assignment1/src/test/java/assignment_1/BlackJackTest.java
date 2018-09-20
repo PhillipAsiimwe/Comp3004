@@ -15,8 +15,8 @@ public class BlackJackTest extends TestCase {
 		Player p = new Player();
 		p.addCard(new Card("SA"));
 		p.addCard(new Card("DQ"));
-		y.addCard(new Card("H4"));
-		y.addCard(new Card("D4"));
+		//y.addCard(new Card("H4"));
+		//y.addCard(new Card("D4"));
 		//game.setPlayer(p);
 		//game.decide(p);// should print that player won
 		//game.hit(p);//should allow 
@@ -25,6 +25,7 @@ public class BlackJackTest extends TestCase {
 		y.addCard(new Card("S6"));
 		game.setPlayer(y);
 		game.play(y);//shouldnt make soft 17 
+		System.out.println(y.toString());
 		//game.decide(y);//Should print the dealer won
 		//game.hit(y);
 		
