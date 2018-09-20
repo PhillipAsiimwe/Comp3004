@@ -1,5 +1,5 @@
 package assignment_1;
-
+//coded by Phillip Amanya 101030494
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
