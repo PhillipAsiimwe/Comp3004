@@ -237,8 +237,7 @@ public class Game {
 	}
 	public void play(Dealer a) {
 		if (a.getvalue(1)<17) {// test 
-			Hit(a,"SA");//just for test if 
-			//hit(a);
+			hit(a);
 		}else if (a.getvalue(1)==17) {
 			if (a.isSoft17()) {
 				System.out.println("**SOFT 17**");
