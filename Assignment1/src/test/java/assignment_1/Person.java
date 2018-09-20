@@ -58,22 +58,29 @@ public abstract class Person {
 }
 
 	public void addCard(Card c) {
-		if (bust1) {
-			inHnd2.add(c);
+		if (isSplit) {
+			if (getvalue(1)>21 && getvalue(2)>21) {
+				setFinished();
+			}else if (getvalue(1)>21) {
+				inHnd2.add(c);
+			}else {
+				inHnd.add(c);
+			}
 		}else {
-		inHnd.add(c);
-		}
+			if (getvalue(1)>21) {
+				setFinished();
+			}else {
+				inHnd.add(c);
+			}
+		}		
 	}
 	public void setfirstcard(Card a) {
 		firstCard= a;
 	}
 	public void bust1() {
-		bust1 = true;
-		setFinished();
-	}
+		bust1 = true;	}
 	public void bust2() {
 		bust2=true;
-		setFinished();
 	}
 	
 	public void addCard(String a,String b) {
