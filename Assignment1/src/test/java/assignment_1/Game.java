@@ -208,7 +208,7 @@ public class Game {
 	public void console() {
 		String answer=null;
 		Scanner sc = new Scanner(System.in);
-		while(!player.isFinsihed() || !dealer.isFinsihed()) {
+		while((!player.isFinsihed() || !dealer.isFinsihed())&&!gameover) {
 			if (!player.isFinsihed()) {
 				System.out.println(player.toString());
 				System.out.println(player.getname() +" would you like to Hit (H) or stand (S)");

@@ -137,8 +137,6 @@ public abstract class Person {
 				bust2=true;
 			}
 			
-		}else {
-			System.out.println("**NOT Split**");
 		}
 		if (getvalue(1)>21) {
 			return 0;

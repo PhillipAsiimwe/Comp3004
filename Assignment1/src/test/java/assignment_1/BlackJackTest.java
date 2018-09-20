@@ -146,28 +146,9 @@ public class BlackJackTest extends TestCase {
 
 	public void testDeck() {
 		Player testp = new Player();
-		Game test = new Game("n");
-		boolean same = false;
-		int count=0;
-		ArrayList<Card> testArray = new ArrayList<Card>(test.getDeck());
-		test.shuffleDeck();
-		ArrayList<Card> testArray2= new ArrayList<Card>(test.getDeck());
-		for (int i =0; i<testArray.size();i++) {
-			if (testArray.get(i).equals(testArray2.get(i))) {
-				count++;
-			}
-		}
-		if (count==testArray.size()) {
-			same=true;
-		}
-		System.out.println(testArray.toString());
-		System.out.println(testArray2.toString());
-		
-		//test.shuffleDeck();
-		assertEquals(52,test.getdecksize());
-		assertEquals(false,same);
-		System.out.println(test.getdecksize());
-		
+		Game testenv = new Game();
+		testenv.shuffleDeck();
+		assertEquals(52,testenv.getdecksize());// tests size of Deck
 		
 	}
 	public void testgetvalue() {// tests Loop and getvalue
@@ -205,9 +186,9 @@ public class BlackJackTest extends TestCase {
 		test.addCard(new Card("HA"));
 		assertEquals(12, test.getvalue(1));
 		Player test2 = new Player();
-		test.addCard(new Card("S10"));
-		test.addCard(new Card("DA"));
-		assertEquals(21, test.getvalue(1));
+		test2.addCard(new Card("S10"));
+		test2.addCard(new Card("DA"));
+		assertEquals(21, test2.getvalue(1));
 		test = new Player ();
 		test.addCard(new Card("S10"));
 		test.addCard(new Card("S5"));
