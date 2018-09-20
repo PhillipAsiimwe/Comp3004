@@ -9,6 +9,32 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
+	public void testSame() {
+		System.out.println("***testSame***");// sees whats outputted when the cards are the same. 
+		Game testenv = new Game();
+		Player testp = new Player ();
+		Dealer testd = new Dealer ();
+		testp.addCard(new Card("SA"));
+		testp.addCard(new Card("D9"));
+		testd.addCard(new Card("DA"));
+		testd.addCard(new Card("S9"));
+		testenv.setPlayer(testd);
+		testenv.setPlayer(testp);
+		testenv.done();
+		// tests after splitting
+		testenv = new Game();
+		testp = new Player();
+		testd = new Dealer();
+		testp.addCard(new Card("S2"));
+		testp.addCard(new Card("D2"));
+		testp.split();
+		testp.addCard(new Card("SA"));
+		testd.addCard(new Card("H2"));
+		testenv.setPlayer(testd);
+		testenv.setPlayer(testp);
+		testenv.done();
+		
+	}
 	public void testWinInstantly() {
 		System.out.println("***testWinInstantly***");
 		Game game = new Game();

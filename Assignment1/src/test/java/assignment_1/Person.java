@@ -8,7 +8,6 @@ public abstract class Person {
 	private String name;
 	private Card firstCard;
 	private boolean bust1 = false;
-	private boolean bust2 = false;
 	private boolean HideDealer=true;
 	private boolean finished = false; 
 	private boolean isSplit = false;
@@ -83,7 +82,6 @@ public abstract class Person {
 	public void bust1() {
 		bust1 = true;	}
 	public void bust2() {
-		bust2=true;
 	}
 	
 	public void addCard(String a,String b) {
@@ -137,7 +135,6 @@ public abstract class Person {
 				return getvalue(1);
 			}else {
 				bust1=true;
-				bust2=true;
 			}
 			
 		}
