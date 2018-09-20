@@ -100,7 +100,7 @@ public class Game {
 		dealer.setFinished();
 		System.out.println(player.toString());
 		System.out.println(dealer.toString());
-		if (player.getvalue(1)==21 && dealer.getvalue(1)==21) {
+		if (player.getvalue(1)==21 && dealer.getvalue(1)==21 ) {
 			System.out.println("BlackJack Dealer Wins");
 		}else if (player.getvalue(1)==21) {
 			System.out.println("BlackJack player Wins");
@@ -110,6 +110,8 @@ public class Game {
 		}else if (player.Best()>dealer.Best()) {
 			System.out.println("Player Wins");
 		}else if (player.Best()<dealer.Best()) {
+			System.out.println("Dealer Wins");
+		}else if(player.Best()==dealer.Best()) {
 			System.out.println("Dealer Wins");
 		}
 	}
