@@ -17,13 +17,16 @@ public class BlackJackTest extends TestCase {
 		p.addCard(new Card("DQ"));
 		y.addCard(new Card("H4"));
 		y.addCard(new Card("D4"));
-		game.setPlayer(p);
-		game.decide(p);// should print that player won
-		y.addCard(new Card("DA"));
-		y.addCard(new Card("S2"));
+		//game.setPlayer(p);
+		//game.decide(p);// should print that player won
+		//game.hit(p);//should allow 
+		//game.hit(y);
+		y.addCard(new Card("S10"));
+		y.addCard(new Card("S6"));
 		game.setPlayer(y);
-		game.decide(y);//Should print the dealer won
-		game.hit(y);
+		game.play(y);//shouldnt make soft 17 
+		//game.decide(y);//Should print the dealer won
+		//game.hit(y);
 		
 	}
 //	public void testDecide() {

@@ -12,12 +12,12 @@ public class Game {
 	private Player player;
 	private Dealer dealer;
 	boolean shuffled = false; 
+	boolean gameover = false;
 
 	public Game () {
 		initializeDeck();
 		shuffleDeck();
 	}
-	
 	public Game(String b) {
 		start(b);
 		setPlayer(player);
@@ -125,9 +125,9 @@ public class Game {
 			shuffleDeck();
 		}
 		if (a.getHand().size()==0) {
-		for (int i = 0;i<2;i++) {
-			Deal(a);
-		}	
+			for (int i = 0;i<2;i++) {
+				Deal(a);
+			}		
 		}
 		if ( a instanceof Dealer) {
 			dealer= (Dealer) a; 
@@ -136,9 +136,9 @@ public class Game {
 			player = (Player) a; 
 		}	
 		System.out.println(a.toString());
-	}
-	
+	}	
 	public void Hit(Person p,String s) {
+		if (!gameover) {
 		if(p.getHand().size()<2 && !p.isSplit()) {
 			System.out.println("Cant Hit yet");
 		}else {
@@ -162,18 +162,22 @@ public class Game {
 			
 		}
 		this.decide((Player)p);
-		
-	}
-	public void stand(Person p) {
-		if (p.isSplit()) {
-			p.bust1();
 		}else {
-			p.setFinished();
-
+			System.out.println("GAme over");
 		}
 		
 	}
-
+	public void stand(Person p) {
+		if(!gameover){
+			if (p.isSplit()) {
+				p.bust1();
+			}else {
+				p.setFinished();
+			}
+		}else {
+			System.out.println("Game Over Stand");
+		}
+	}
 	public void initializeDeck() {
 		Deck = new Stack<Card>();
 		String [] suit = new String[] {"H","S","C","D"};
@@ -190,8 +194,6 @@ public class Game {
 		if (!Used.contains(toadd)) {
 		Used.add(toadd);
 		a.addCard(toadd);
-		}else {
-			System.out.println("Couldnt Deal");
 		}
 	}
 	public int getdecksize() {
@@ -201,7 +203,7 @@ public class Game {
 		initializeDeck();
 		shuffleDeck();
 		if (a.equals("NON")) {player = new Player();}else {player = new Player(a);}
-		dealer= new Dealer("Mike");
+		dealer= new Dealer("Mike the Dealer");
 	}
 	public void console() {
 		String answer=null;
@@ -210,7 +212,6 @@ public class Game {
 			if (!player.isFinsihed()) {
 				System.out.println(player.toString());
 				System.out.println(player.getname() +" would you like to Hit (H) or stand (S)");
-				
 				if (player.canSplit()) {
 					System.out.println("You can also split (D)");
 				}
@@ -235,8 +236,9 @@ public class Game {
 		done();
 	}
 	public void play(Dealer a) {
-		if (a.getvalue(1)<17) {
-			hit(a);
+		if (a.getvalue(1)<17) {// test 
+			Hit(a,"SA");//just for test if 
+			//hit(a);
 		}else if (a.getvalue(1)==17) {
 			if (a.isSoft17()) {
 				System.out.println("**SOFT 17**");
@@ -264,7 +266,7 @@ public class Game {
 	}
 	
 	public void hit(Person c) {
-		if (!c.isFinsihed()) {
+		if (!gameover) {
 		if (c.getvalue(1)<21) {
 			Deal(c);
 		}else {
@@ -316,21 +318,23 @@ public class Game {
 				if (a.getvalue(1)>21) {
 					System.out.println("***Dealer bust1***");
 					System.out.println(dealer.toString());
-					a.bust1();
+					gameover=true;
 				}else if (a.getvalue(1)==21) {
 					System.out.println("***BlackJack Dealer Wins From 1st Hand***");
 					System.out.println(dealer.toString());
-					a.setFinished();
+					gameover=true;
 				}
 				if (a.isSplit()) {
 					if (a.getvalue(2)>21) {
 						System.out.println("***Dealer bust2**** ");
 						System.out.println(dealer.toString());
 						a.bust2();
+						gameover=true;
+
 					}else if (a.getvalue(2)==21) {
 						System.out.println("***BlackJack Dealer Wins From 2st Hand***");
 						System.out.println(dealer.toString());
-						a.setFinished();
+						gameover=true;
 					}
 				}
 				
