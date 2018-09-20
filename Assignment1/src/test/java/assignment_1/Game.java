@@ -150,13 +150,11 @@ public class Game {
 			System.out.println("Cant Hit yet");
 		}else {
 			if (!p.isbust1()) {
-			System.out.println("HITIT");
 			Card c = new Card(s);
 			Used.add(c);
 			Deck.remove(c);
 			p.addCard(c);
 			}else if (p.isbust1()){
-				System.out.println("HITIT");
 				Card c = new Card(s);
 				Used.add(c);
 				Deck.remove(c);

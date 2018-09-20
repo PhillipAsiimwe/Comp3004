@@ -64,7 +64,7 @@ public abstract class Person {
 		if (isSplit) {
 			if (getvalue(1)>21 && getvalue(2)>21) {
 				setFinished();
-			}else if (getvalue(1)>21) {
+			}else if (getvalue(1)>21||bust1) {
 				inHnd2.add(c);
 			}else {
 				inHnd.add(c);
