@@ -10,6 +10,7 @@ import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
 	public void testWinInstantly() {
+		System.out.println("***testWinInstantly***");
 		Game game = new Game();
 		Dealer y = new Dealer();
 		Player p = new Player();
@@ -31,6 +32,7 @@ public class BlackJackTest extends TestCase {
 		
 	}
 	public void testDecide() {
+		System.out.println("***testDecide***");
 		Game game = new Game();
 		Dealer y = new Dealer();
 		Player g = new Player();
@@ -52,6 +54,7 @@ public class BlackJackTest extends TestCase {
 		
 	}
 	public void testgetvalueAce() {
+		System.out.println("***testgetvalueAce***");
 		Game game = new Game();
 		Player p= new Player();
 		p.addCard(new Card("H4"));
@@ -63,6 +66,7 @@ public class BlackJackTest extends TestCase {
 		
 	}
 	public void testisSoft17() {
+		System.out.println("***testisSoft17***");
 		Dealer testd = new Dealer();
 		Player testp = new Player();
 		Game testenv= new Game();
@@ -78,6 +82,8 @@ public class BlackJackTest extends TestCase {
 
 	
 	public void testSplitting() {
+		System.out.println("***testSplitting***");
+
 		Player testp = new Player();
 		Dealer Testd = new Dealer();
 		Card temp = new Card("SA");
@@ -98,6 +104,8 @@ public class BlackJackTest extends TestCase {
 	
 	
 	public void testCard() {
+		System.out.println("***testCard***");
+
 		Card temp = new Card("SJ");
 		Card temp1 = new Card("H10");
 		System.out.println(temp.toString());
@@ -105,6 +113,8 @@ public class BlackJackTest extends TestCase {
 	}
 	
 	public void testHit() {
+		System.out.println("***testHit***");
+
 		Player testp = new Player();
 		Game testenv = new Game("c");
 		testenv.setPlayer(testp);
@@ -118,6 +128,8 @@ public class BlackJackTest extends TestCase {
 	}
 	
 	public void testsplitting() {
+		System.out.println("***testsplitting***");
+
 		Dealer Testd = new Dealer("Noah");
 		Player Testp = new Player("Time");
 		Card temp1 = new Card ("H","2");
@@ -134,18 +146,21 @@ public class BlackJackTest extends TestCase {
 	}
 	
 	public void testDealer() {
+		System.out.println("***testDealer***");
+
 		Dealer testd= new Dealer("Mike");
 		Player testp = new Player("Phill");
 		Game test = new Game("n");
 		test.setPlayer(testd);
 		test.setPlayer(testp);
 		System.out.println(testd.toString());
-		System.out.println(testp.toString());
+		System.out.println(testp.toString());// shows initial cards shown for player 
 
 	}
 	
-
 	public void testDeck() {
+		System.out.println("***testDeck***");
+
 		Player testp = new Player();
 		Game testenv = new Game();
 		testenv.shuffleDeck();
@@ -153,6 +168,8 @@ public class BlackJackTest extends TestCase {
 		
 	}
 	public void testgetvalue() {// tests Loop and getvalue
+		System.out.println("***testgetvalue***");
+
 		Card test = new Card("H","A");
 		assertEquals(1, test.getvalue());
 		test = new Card("H","2");
@@ -181,6 +198,8 @@ public class BlackJackTest extends TestCase {
 		assertEquals(10, test.getvalue());
 	}
 	public void testAce() {// test to make sure ACE is 11 and 1 at the right instance after changing return arguments and parameters. 
+		System.out.println("***testAce***");
+
 		Player test = new Player();
 		test.addCard(new Card("SA"));
 		assertEquals(11, test.getvalue(1));
@@ -195,8 +214,14 @@ public class BlackJackTest extends TestCase {
 		test.addCard(new Card("S5"));
 		test.addCard(new Card("SA"));
 		assertEquals(16, test.getvalue(1));
+		test.addCard(new Card("DA"));
+		test.addCard(new Card("HA"));
+		assertEquals(18, test.getvalue(1));
+
+		
 	}
 	public void testaddCard() {
+		System.out.println("***testaddCard***");
 		Player test = new Player();
 		test.addCard("H", "4");
 		test.addCard("C", "J");
