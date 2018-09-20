@@ -143,6 +143,7 @@ public class BlackJackTest extends TestCase {
 		System.out.println(testp.toString());
 
 	}
+	
 
 	public void testDeck() {
 		Player testp = new Player();

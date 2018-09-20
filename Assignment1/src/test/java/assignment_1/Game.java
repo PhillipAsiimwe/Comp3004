@@ -71,6 +71,7 @@ public class Game {
 					//dont 
 				}
 			}else {
+				dealer.showDealer();
 				if (a[i].length()<=2) {
 					dealer.addCard(new Card(a[i]));
 					decide(dealer);
@@ -227,6 +228,7 @@ public class Game {
 				}
 				
 			}else if (!dealer.isFinsihed()) {
+				dealer.showDealer();
 				System.out.println(dealer.toString());
 				play(dealer);
 			}
@@ -242,6 +244,8 @@ public class Game {
 			if (a.isSoft17()) {
 				System.out.println("**SOFT 17**");
 				hit(a);
+			}else {
+				stand(a);
 			}
 		}else {
 			stand(a);

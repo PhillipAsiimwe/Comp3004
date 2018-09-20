@@ -11,6 +11,7 @@ public class main {
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome to BlackJack, How would you like to play? ('c' console or 'f' File input)");
 		boolean flag= true;
+		boolean error=false;
 		while(flag) {
 		Choice = in.nextLine();
 		if (Choice.equalsIgnoreCase("c")) {
@@ -20,6 +21,7 @@ public class main {
 			game = new Game(Choice);
 			System.exit(0);
 		}else if (Choice.equalsIgnoreCase("f")){
+			error=false;
 			System.out.println("Ok, please make sure the .TXT file is in '/Assignment_1/src/main/resources'");
 			System.out.println("What is the File  name?");
 			String name= in.nextLine();
@@ -29,13 +31,17 @@ public class main {
 			try {
 				sc = new Scanner(file);
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				System.out.println("e.printStackTrace():File Doesnt Exist");
+				error = true;
 			}
-			while(sc.hasNextLine()) {
-				String line = sc.nextLine();
-				String [] commands = line.split(" ");
-				game= new Game(commands);
-				
+			if(!error) {
+				while(sc.hasNextLine()) {
+					String line = sc.nextLine();
+					String [] commands = line.split(" ");
+					game= new Game(commands);
+					
+				}
+			
 			}
 			
 		}else {  

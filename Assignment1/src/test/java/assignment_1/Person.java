@@ -9,7 +9,7 @@ public abstract class Person {
 	private Card firstCard;
 	private boolean bust1 = false;
 	private boolean bust2 = false;
-
+	private boolean HideDealer=true;
 	private boolean finished = false; 
 	private boolean isSplit = false;
 
@@ -21,6 +21,9 @@ public abstract class Person {
 	}
 	public String getname() {
 		return name;
+	}
+	public void showDealer() {
+		HideDealer=false;
 	}
 	public int getvalue(int c) {
 		
@@ -146,13 +149,13 @@ public abstract class Person {
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
-			if (this instanceof Dealer && a.equals(firstCard)&& finished) {
+			if (this instanceof Dealer && a.equals(firstCard)&& HideDealer) {
 				Text += "**HIDDEN**\n";
 			}else {
 			Text+= a.toString() + "\n";
 			}
 		}
-		if (this instanceof Dealer&& finished) {
+		if (this instanceof Dealer && HideDealer) {
 		Text+="Total:?\n";
 		}else {
 			Text+="Total: "+getvalue(1)+"\n";
@@ -160,13 +163,13 @@ public abstract class Person {
 		}
 		if (isSplit) {
 			for (Card ab: inHnd2) {
-				if (this instanceof Dealer && ab.equals(firstCard)&& finished) {
+				if (this instanceof Dealer && ab.equals(firstCard)&& HideDealer) {
 					Text += "**HIDDEN**\n";
 				}else {
 				Text+= ab.toString() + "\n";
 				}
 			}
-			if (this instanceof Dealer && finished) {
+			if (this instanceof Dealer && HideDealer) {
 				Text+="Total:?\n";
 				}else {
 					Text+="Total: "+getvalue(2)+"\n";
