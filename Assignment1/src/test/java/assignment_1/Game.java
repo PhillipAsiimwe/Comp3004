@@ -347,6 +347,7 @@ public class Game {
 					System.out.println("***Player bust2**** ");
 					System.out.println(player.toString());
 					a.bust2();
+					a.setFinished();
 				}else if (a.getvalue(2)==21) {
 					System.out.println("***BlackJack Player Wins From 2st Hand***");
 					System.out.println(player.toString());
