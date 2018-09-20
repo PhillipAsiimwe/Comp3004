@@ -27,10 +27,16 @@ public class Game {
 	}
 	public Game(String [] a) {
 		start("NON");//Starts game off files
+		dealer.showDealer();
+		try {
 		player.addCard(new Card(a[0]));
 		player.addCard(new Card(a[1]));
 		dealer.addCard(new Card(a[2]));
 		dealer.addCard(new Card(a[3]));
+		}catch(Exception e) {
+			System.out.println("ohh something went wrong in the File please fix it");
+			System.exit(0);
+		}
 		if (dealer.canSplit()) {
 			dealer.split();
 		}
