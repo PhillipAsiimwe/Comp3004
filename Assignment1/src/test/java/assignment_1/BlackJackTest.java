@@ -9,13 +9,30 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class BlackJackTest extends TestCase {
-	
+	public void testDecide() {
+		Game game = new Game();
+		Dealer y = new Dealer();
+		Player g = new Player();
+		//Want to check if decide will know when to finish on a bust
+		g.addCard(new Card("S10"));
+		g.addCard(new Card("HQ"));
+		g.addCard(new Card("DA"));
+		game.setPlayer(g);
+		game.decide(g);//should print out Bust
+		y.addCard(new Card("SA"));
+		y.addCard(new Card("DA"));
+		y.split();
+		y.addCard(new Card("S9"));
+		y.addCard(new Card("DQ"));
+		game.setPlayer(y);
+		game.decide(y);
+		
+	}
 	public void testgetvalueAce() {
 		Game game = new Game();
 		Player p= new Player();
 		p.addCard(new Card("H4"));
 		p.addCard(new Card("S4"));
-		p.addCard(new Card("D5"));
 		p.addCard(new Card("HA"));
 		p.addCard(new Card("SA"));
 		game.setPlayer(p);

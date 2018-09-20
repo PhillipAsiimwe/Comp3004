@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 
+import org.hamcrest.core.IsSame;
+
 public class Game {
 	private Stack <Card> Deck;
 	private Set<Card> Used = new HashSet<Card>();
@@ -329,18 +331,25 @@ public class Game {
 	public void decide(Person a) {
 		if (a instanceof Player) {
 			if (a.getvalue(1)>21) {
-				System.out.println("***bust1**** ");
+				System.out.println("***Player bust1***");
+				System.out.println(player.toString());
 				a.bust1();
+				if (!a.isSplit()) {
+					a.setFinished();
+				}
 			}else if (a.getvalue(1)==21) {
-				System.out.println("***BlackJack***");
+				System.out.println("***BlackJack Player Wins From 1st Hand***");
+				System.out.println(player.toString());
 				a.setFinished();
 			}
 			if (a.isSplit()) {
 				if (a.getvalue(2)>21) {
-					System.out.println("***bust2**** ");
+					System.out.println("***Player bust2**** ");
+					System.out.println(player.toString());
 					a.bust2();
 				}else if (a.getvalue(2)==21) {
-					System.out.println("***BlackJack***");
+					System.out.println("***BlackJack Player Wins From 2st Hand***");
+					System.out.println(player.toString());
 					a.setFinished();
 				}
 			}
@@ -349,16 +358,31 @@ public class Game {
 		}else if (a instanceof Dealer) {
 			if (a.isSplit()) {
 				if (a.getvalue(1)>21) {
+					System.out.println("***Dealer bust1***");
+					System.out.println(dealer.toString());
 					a.bust1();
-				}else if (a.getvalue(2)>21) {
-					a.bust2();
+				}else if (a.getvalue(1)==21) {
+					System.out.println("***BlackJack Dealer Wins From 1st Hand***");
+					System.out.println(dealer.toString());
+					a.setFinished();
 				}
-				else  {
+				if (a.isSplit()) {
+					if (a.getvalue(2)>21) {
+						System.out.println("***Dealer bust2**** ");
+						System.out.println(dealer.toString());
+						a.bust2();
+					}else if (a.getvalue(2)==21) {
+						System.out.println("***BlackJack Dealer Wins From 2st Hand***");
+						System.out.println(dealer.toString());
+						a.setFinished();
+					}
 				}
-			}
+				
 		}
 		
 	}
+	}
+}
 //	public void decide(Player a) {
 //		if (a.isSplit()) {
 //			if (a.getvalue(1)>21) {
@@ -385,5 +409,3 @@ public class Game {
 //		}
 //	}
 	
-
-}

@@ -141,13 +141,13 @@ public abstract class Person {
 	public String toString() {
 		String Text="";
 		for (Card a: inHnd) {
-			if (this instanceof Dealer && a.equals(firstCard)&& !finished) {
+			if (this instanceof Dealer && a.equals(firstCard)&& finished) {
 				Text += "**HIDDEN**\n";
 			}else {
 			Text+= a.toString() + "\n";
 			}
 		}
-		if (this instanceof Dealer&& !finished) {
+		if (this instanceof Dealer&& finished) {
 		Text+="Total:?\n";
 		}else {
 			Text+="Total: "+getvalue(1)+"\n";
@@ -155,13 +155,13 @@ public abstract class Person {
 		}
 		if (isSplit) {
 			for (Card ab: inHnd2) {
-				if (this instanceof Dealer && ab.equals(firstCard)&& !finished) {
+				if (this instanceof Dealer && ab.equals(firstCard)&& finished) {
 					Text += "**HIDDEN**\n";
 				}else {
 				Text+= ab.toString() + "\n";
 				}
 			}
-			if (this instanceof Dealer && !finished) {
+			if (this instanceof Dealer && finished) {
 				Text+="Total:?\n";
 				}else {
 					Text+="Total: "+getvalue(2)+"\n";
