@@ -19,6 +19,8 @@ public class Card {
 			rank = Rank.get(b);
 		}else {
 			System.out.println("Card doesnt exist");
+			System.out.println("I had a problem understanding '"+ a + b+ "' Cant Continue GoodBye " );
+			System.exit(0);
 		}
 		
 	}
